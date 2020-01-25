@@ -8,5 +8,5 @@ RUN n 8
 RUN apt-get install -y build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 RUN npm i mdgen --loglevel notice
 COPY . .
-RUN for f in *.mdj; do node node_modules/mdgen/bin/mdgen.js pdf -m $f -o $f.pdf; done
+RUN for f in *.mdj; do node node_modules/mdgen/bin/mdgen.js pdf -m $f -o ${f%%.*}.pdf; done
 CMD cp *.pdf /export/
